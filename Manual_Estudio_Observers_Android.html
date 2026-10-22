@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Manual de Estudio: Observers en Android Clean Architecture</title>
+  <style>
+    :root {
+      --primary: #E53935;
+      --primary-dark: #C62828;
+      --livedata-blue: #1E88E5;
+      --flow-green: #2E7D32;
+      --exercise-orange: #EF6C00;
+      --bg: #F8F9FA;
+      --surface: #FFFFFF;
+      --text: #202124;
+      --text-secondary: #5F6368;
+      --border: #DADCE0;
+      --code-bg: #282C34;
+      --code-text: #ABB2BF;
+    }
+
+    @media print {
+      body { background: white !important; font-size: 11pt; }
+      .no-print { display: none !important; }
+      .page-break { page-break-before: always; }
+      .card { box-shadow: none !important; border: 1px solid #ddd !important; }
+      pre { white-space: pre-wrap !important; }
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background-color: var(--bg);
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px;
+      background: var(--surface);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+
+    header {
+      border-bottom: 3px solid var(--primary);
+      padding-bottom: 24px;
+      margin-bottom: 36px;
+    }
+
+    .badge-bar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 16px;
+      font-size: 12px;
+      font-weight: 700;
+      color: white;
+    }
+    .badge-primary { background: var(--primary); }
+    .badge-livedata { background: var(--livedata-blue); }
+    .badge-flow { background: var(--flow-green); }
+    .badge-exercise { background: var(--exercise-orange); }
+
+    h1 {
+      font-size: 28px;
+      color: #111;
+      margin: 0 0 10px 0;
+      font-weight: 800;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    h2 {
+      font-size: 20px;
+      color: var(--primary-dark);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+      margin-top: 36px;
+      margin-bottom: 16px;
+    }
+
+    h3 {
+      font-size: 16px;
+      color: #333;
+      margin-top: 24px;
+      margin-bottom: 10px;
+    }
+
+    p, li {
+      font-size: 14.5px;
+      color: #3C4043;
+    }
+
+    ul, ol {
+      padding-left: 24px;
+      margin-bottom: 16px;
+    }
+
+    li { margin-bottom: 6px; }
+
+    .callout {
+      border-left: 4px solid var(--primary);
+      background: #FCE8E6;
+      padding: 14px 18px;
+      border-radius: 0 8px 8px 0;
+      margin: 20px 0;
+    }
+    .callout-blue {
+      border-left-color: var(--livedata-blue);
+      background: #E8F0FE;
+    }
+    .callout-green {
+      border-left-color: var(--flow-green);
+      background: #E6F4EA;
+    }
+    .callout-title {
+      font-weight: bold;
+      margin-bottom: 4px;
+      font-size: 14px;
+    }
+
+    pre {
+      background: var(--code-bg);
+      color: var(--code-text);
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 13px;
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+      line-height: 1.45;
+      margin: 16px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 13.5px;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 14px;
+      text-align: left;
+    }
+
+    th {
+      background: #F1F3F4;
+      font-weight: 700;
+      color: #202124;
+    }
+
+    tr:nth-child(even) { background: #FAFAFA; }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 18px;
+      margin: 18px 0;
+      background: #FFF;
+    }
+
+    .action-btn {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      padding: 10px 18px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="no-print" style="margin-bottom: 20px; text-align: right;">
+    <button class="action-btn" onclick="window.print()">🖨️ Imprimir / Guardar como PDF</button>
+  </div>
+
+  <header>
+    <div class="badge-bar">
+      <span class="badge badge-primary">Android Architecture</span>
+      <span class="badge badge-livedata">LiveData</span>
+      <span class="badge badge-flow">Kotlin Flow</span>
+      <span class="badge badge-exercise">Jetpack Compose</span>
+    </div>
+    <h1>Manual de Estudio y Referencia Técnica: Observers en Android</h1>
+    <p class="subtitle">De LiveData a Kotlin StateFlow y SharedFlow bajo Clean Architecture y Jetpack Compose</p>
+  </header>
+
+  <h2>1. El Dilema del Estado Asíncrono en Android</h2>
+  <p>
+    En el desarrollo móvil con Android, la interfaz de usuario (UI) y las operaciones de fondo (red, base de datos) viven en mundos con ciclos de vida completamente desincronizados. La UI puede ser destruida y recreada en cualquier momento por el sistema operativo debido a eventos de configuración (el caso más clásico es la <strong>rotación de pantalla</strong>), cambios de idioma o muerte por baja memoria (Low Memory Killer).
+  </p>
+  <p>
+    Antes de 2017, las peticiones asíncronas se ejecutaban mediante Callbacks tradicionales o <code>AsyncTask</code>. Si la respuesta del servidor llegaba cuando la Activity ya había sido destruida por una rotación de pantalla, invocar cualquier método sobre la vista provocaba los infames <code>NullPointerException: Attempt to invoke virtual method on a null object reference</code> o provocaba <strong>fugas de memoria (Memory Leaks)</strong> al retener referencias vivas al contexto de la Activity destruida.
+  </p>
+
+  <div class="callout callout-blue">
+    <div class="callout-title">El Patrón Observer como solución fundamental</div>
+    El Patrón Observer invierte el sentido de la comunicación. En lugar de que la vista solicite activamente los datos ("polling") o retenga callbacks directos, la vista se limita a <strong>suscribirse pasivamente</strong> a una fuente única de verdad inmutable (Single Source of Truth). Cuando los datos cambian, el observador es notificado automáticamente respetando su ciclo de vida.
+  </div>
+
+  <h2>2. Clean Architecture + MVVM: Separación de Responsabilidades</h2>
+  <p>
+    Para que una aplicación sea testeable y escalable, desacoplamos la lógica de negocio del framework de Android mediante Clean Architecture en tres capas estrictas:
+  </p>
+  <ul>
+    <li><strong>Capa Data:</strong> Implementa los repositorios (<code>PokemonRepositoryImpl</code>) y Data Sources. Consume la API REST de PokeAPI mediante Retrofit y Moshi. Transforma los DTOs de red en modelos puros de dominio mediante <code>PokemonMapper</code>.</li>
+    <li><strong>Capa Domain:</strong> El corazón del negocio. Es <strong>KOTLIN PURO</strong>. No conoce dependencias de Android, Retrofit ni Compose. Define los contratos de repositorio (interfaces) y los Casos de Uso (Use Cases) como <code>GetGen1PokemonUseCase</code>, <code>GetGen2PokemonUseCase</code> y <code>GetPokemonDetailUseCase</code>.</li>
+    <li><strong>Capa Presentation:</strong> Contiene los ViewModels y la interfaz en Jetpack Compose. Los ViewModels orquestan la ejecución de casos de uso y exponen flujos observables a la pantalla.</li>
+  </ul>
+
+  <div class="callout">
+    <div class="callout-title">⚠️ REGLA DE ORO ARQUITECTÓNICA</div>
+    La capa <code>domain</code> <strong>NUNCA</strong> debe importar paquetes de <code>androidx.lifecycle</code> ni <code>LiveData</code>. LiveData y StateFlow son mecanismos de la capa de <strong>Presentación</strong>. El dominio solo debe manejar funciones suspendidas (<code>suspend fun</code>) o Flows puros de Kotlin.
+  </div>
+
+  <h2>3. El Enfoque Clásico: LiveData</h2>
+  <p>
+    Presentado en 2017 como parte de Android Architecture Components, <strong>LiveData</strong> es un contenedor de datos observable consciente del ciclo de vida (<code>Lifecycle-aware</code>).
+  </p>
+  <h3>Ciclo de Vida en LiveData</h3>
+  <p>
+    LiveData exige un <code>LifecycleOwner</code> (como una Activity, Fragment o Composable). Solo despacha actualizaciones si el componente se encuentra en un estado activo (<code>STARTED</code> o <code>RESUMED</code>). Si la app pasa a segundo plano (<code>STOPPED</code>), LiveData suspende las emisiones. Al destruirse la vista (<code>DESTROYED</code>), el observador se desuscribe automáticamente, eliminando de raíz las fugas de memoria.
+  </p>
+
+  <h3>Encapsulamiento con Backing Property</h3>
+  <pre><code>// 1. Estado mutable privado (solo el ViewModel puede modificarlo)
+private val _uiState = MutableLiveData&lt;UiState&lt;List&lt;Pokemon&gt;&gt;&gt;(UiState.Idle)
+
+// 2. Estado inmutable público (la vista solo puede OBSERVAR)
+val uiState: LiveData&lt;UiState&lt;List&lt;Pokemon&gt;&gt;&gt; = _uiState
+
+fun loadPokemon() {
+    _uiState.value = UiState.Loading
+    viewModelScope.launch {
+        when (val result = getGen1PokemonUseCase()) {
+            is Resource.Success -> _uiState.value = UiState.Success(result.data)
+            is Resource.Error -> _uiState.value = UiState.Error(result.message)
+        }
+    }
+}</code></pre>
+
+  <h3>Limitaciones de LiveData</h3>
+  <ul>
+    <li><strong>Acoplamiento a Android:</strong> Vive en <code>androidx.lifecycle</code>. No se puede reutilizar en proyectos Kotlin Multiplatform (KMP).</li>
+    <li><strong>Pobre catálogo de operadores:</strong> Solo cuenta con transformaciones básicas (<code>map</code>, <code>switchMap</code>). Carece de <code>debounce</code>, <code>combine</code> o <code>buffer</code>.</li>
+    <li><strong>El bug de los Eventos One-Shot:</strong> LiveData retiene siempre el último valor. Si muestras un Snackbar o ejecutas una navegación, al girar la pantalla el nuevo observador vuelve a recibir el evento y se vuelve a disparar.</li>
+  </ul>
+
+  <div class="page-break"></div>
+
+  <h2>4. El Enfoque Moderno: Kotlin Flow (StateFlow y SharedFlow)</h2>
+  <p>
+    Kotlin Flow es un stream asíncrono y frío perteneciente a <code>kotlinx.coroutines</code>. Es agnóstico del sistema operativo y multiplataforma.
+  </p>
+
+  <h3>Cold Flows vs Hot Flows</h3>
+  <ul>
+    <li><strong>Cold Flow (Frío):</strong> No produce datos hasta que alguien invoca <code>collect()</code>. Cada colector ejecuta el stream desde cero (ideal para queries a Room o llamadas a Retrofit).</li>
+    <li><strong>Hot Flows (Calientes):</strong> Emiten datos continuamente aunque no haya nadie escuchando. Los dos flujos calientes por excelencia en Android son <code>StateFlow</code> y <code>SharedFlow</code>.</li>
+  </ul>
+
+  <h3>StateFlow: El Sucesor de LiveData para UiState</h3>
+  <ul>
+    <li><strong>Valor inicial obligatorio:</strong> <code>MutableStateFlow(UiState.Idle)</code>. El estado de la UI nunca es nulo ni indeterminado.</li>
+    <li><strong>Replay = 1:</strong> Cualquier observador que se conecte recibe de inmediato el último estado disponible.</li>
+    <li><strong>Conflación automática:</strong> Si se emite el mismo valor idéntico dos veces consecutivas (<code>equals == true</code>), StateFlow descarta la segunda emisión para evitar recomposiciones innecesarias.</li>
+  </ul>
+
+  <h3>SharedFlow: Eventos efímeros (One-Shot) sin hacks</h3>
+  <p>
+    Al configurarse con <code>replay = 0</code> por defecto, un evento emitido por <code>SharedFlow</code> se consume y desaparece. Es la solución ideal para Snackbars, Toasts o triggers de navegación.
+  </p>
+
+  <pre><code>// 1. Estado de pantalla (StateFlow)
+private val _uiState = MutableStateFlow&lt;UiState&lt;List&lt;Pokemon&gt;&gt;&gt;(UiState.Idle)
+val uiState: StateFlow&lt;UiState&lt;List&lt;Pokemon&gt;&gt;&gt; = _uiState.asStateFlow()
+
+// 2. Canal de eventos one-shot (SharedFlow)
+private val _effectFlow = MutableSharedFlow&lt;Gen2UiEffect&gt;()
+val effectFlow: SharedFlow&lt;Gen2UiEffect&gt; = _effectFlow.asSharedFlow()
+
+fun onFavoriteClick(pokemon: Pokemon) {
+    viewModelScope.launch {
+        _effectFlow.emit(Gen2UiEffect.ShowSnackbar("¡${pokemon.displayName} guardado!"))
+    }
+}</code></pre>
+
+  <h2>5. Consumo en Jetpack Compose</h2>
+  <h3>Para LiveData:</h3>
+  <pre><code>val uiState by viewModel.uiState.observeAsState(initial = UiState.Idle)</code></pre>
+
+  <h3>Para StateFlow:</h3>
+  <pre><code>val uiState by viewModel.uiState.collectAsStateWithLifecycle()</code></pre>
+
+  <div class="callout callout-green">
+    <div class="callout-title">¿Por qué usar collectAsStateWithLifecycle() y NO collectAsState()?</div>
+    <code>collectAsState()</code> mantiene activa la recolección aunque la aplicación pase a segundo plano, desperdiciando batería y ciclos de CPU. Por el contrario, <code>collectAsStateWithLifecycle()</code> cancela automáticamente la recolección si el ciclo de vida cae por debajo de <code>Lifecycle.State.STARTED</code>.
+  </div>
+
+  <h3>Para SharedFlow (Eventos con LaunchedEffect):</h3>
+  <pre><code>val snackbarHostState = remember { SnackbarHostState() }
+
+LaunchedEffect(Unit) {
+    viewModel.effectFlow.collectLatest { effect ->
+        when (effect) {
+            is Gen2UiEffect.ShowSnackbar -> snackbarHostState.showSnackbar(effect.message)
+        }
+    }
+}</code></pre>
+
+  <h2>6. Matriz Comparativa</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Característica</th>
+        <th>LiveData</th>
+        <th>StateFlow</th>
+        <th>SharedFlow</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Origen</strong></td>
+        <td>Android Jetpack</td>
+        <td>Kotlinx Coroutines</td>
+        <td>Kotlinx Coroutines</td>
+      </tr>
+      <tr>
+        <td><strong>Multiplataforma</strong></td>
+        <td>No (solo Android)</td>
+        <td>Sí (KMP)</td>
+        <td>Sí (KMP)</td>
+      </tr>
+      <tr>
+        <td><strong>Valor Inicial</strong></td>
+        <td>Opcional</td>
+        <td><strong>Obligatorio</strong></td>
+        <td>Configurable (0 por defecto)</td>
+      </tr>
+      <tr>
+        <td><strong>Conflación</strong></td>
+        <td>No</td>
+        <td><strong>Sí</strong> (descarta repetidos)</td>
+        <td>No</td>
+      </tr>
+      <tr>
+        <td><strong>Eventos One-Shot</strong></td>
+        <td>Propenso a bugs (hacks)</td>
+        <td>No recomendado (persiste)</td>
+        <td><strong>Ideal</strong> (replay = 0)</td>
+      </tr>
+      <tr>
+        <td><strong>Operadores</strong></td>
+        <td>Muy limitados</td>
+        <td>Catálogo completo de Flow</td>
+        <td>Catálogo completo de Flow</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>7. El Proyecto de Referencia: PokeDex Academy</h2>
+  <div class="card">
+    <p><strong>Módulo 1 (Gen 1 - Kanto):</strong> 151 Pokémon implementados con <code>LiveData</code> y consumidos con <code>observeAsState()</code> en <code>Gen1ListScreen.kt</code>.</p>
+    <p><strong>Módulo 2 (Gen 2 - Johto):</strong> 100 Pokémon implementados con <code>StateFlow</code> (UiState) y <code>SharedFlow</code> (Snackbar de favoritos) en <code>Gen2ListScreen.kt</code>.</p>
+    <p><strong>Módulo 3 (Taller Alumnos - Hoenn):</strong> Capa de red y UseCases 100% listos, con <code>ExerciseViewModel.kt</code> guiado con comentarios <code>TODO [ALUMNO 1..4]</code> para completar la implementación reactiva.</p>
+  </div>
+
+  <h2>8. Anti-Patrones Críticos a Evitar</h2>
+  <ol>
+    <li><strong>Exponer Mutables públicos:</strong> Permite que la vista mute el estado del ViewModel externamente, destruyendo el encapsulamiento.</li>
+    <li><strong>Usar StateFlow para navegación:</strong> Provoca que al rotar la pantalla o presionar "Atrás", el evento de navegación vuelva a dispararse en bucle.</li>
+    <li><strong>Poner LiveData en Domain o Data:</strong> Acopla la lógica de negocio a Android e impide tests unitarios veloces sin emulador.</li>
+    <li><strong>Múltiples booleanos en lugar de Sealed Interface:</strong> Tener <code>isLoading</code>, <code>isError</code> y <code>data</code> por separado permite estados imposibles (ej: cargando y con error simultáneamente).</li>
+  </ol>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,473 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [4 0 R 6 0 R 8 0 R 10 0 R 12 0 R 14 0 R 16 0 R] /Count 7 >>
+endobj
+3 0 obj
+<< /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> /F2 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >> /F3 << /Type /Font /Subtype /Type1 /BaseFont /Courier >> /F4 << /Type /Font /Subtype /Type1 /BaseFont /Courier-Bold >> >> >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources 3 0 R /Contents 5 0 R >>
+endobj
+5 0 obj
+<< /Length 2748 >>
+stream
+q 0.9 0.15 0.15 rg 54 734 6 42 re f Q
+BT /F2 20 Tf 0.1 0.1 0.1 rg 70 754 Td (MANUAL DE ESTUDIO: OBSERVERS EN ANDROID) Tj ET
+BT /F1 11 Tf 0.35 0.35 0.35 rg 70 736 Td (De LiveData a Kotlin StateFlow y SharedFlow bajo Clean Architecture y Jetpack Compose) Tj ET
+q 0.15 0.5 0.85 rg 54 652 4 48 re f Q
+BT /F2 10.5 Tf 0.15 0.5 0.85 rg 66 690 Td (GUIA DIDACTICA Y MATERIAL DE REFERENCIA DOCENTE) Tj ET
+BT /F1 9 Tf 0.25 0.25 0.25 rg 54 674 Td (Este manual compila la base teorica, el analisis arquitectonico, las matrices comparativas y el codigo de) Tj ET
+BT /F1 9 Tf 0.25 0.25 0.25 rg 54 662 Td (muestra del proyecto PokeDex Academy para desarrolladores y estudiantes.) Tj ET
+q 0.12 0.35 0.8 rg 54 626 504 1.5 re f Q
+BT /F2 15 Tf 0.1 0.2 0.5 rg 54 634 Td (1. Introduccion: El Dilema del Estado Asincrono) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 606 Td (En el desarrollo de aplicaciones Android, la interfaz de usuario \(UI\) y las operaciones de red) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 592 Td (viven en mundos con ciclos de vida diferentes. La UI puede ser destruida y recreada en cualquier) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 578 Td (momento por el sistema operativo debido a eventos de configuracion, principalmente la rotacion) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 564 Td (de pantalla, cambios de idioma o muerte del proceso por memoria insuficiente.) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 546 Td (Historicamente \(2014-2016\), las peticiones asincronas se ejecutaban con Callbacks tradicionales) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 532 Td (o AsyncTask. Si la respuesta del servidor llegaba cuando la Activity ya habia sido destruida por) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 518 Td (una rotacion, invocar metodos sobre la vista provocaba los infames NullPointerException) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 504 Td (\('Activity has been destroyed'\) o severas fugas de memoria \(Memory Leaks\) al retener referencias) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 490 Td (vivas del contexto de la vista.) Tj ET
+BT /F2 12 Tf 0.2 0.2 0.2 rg 54 462 Td (El Patron Observer como solucion fundamental) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 444 Td (El Patron Observer invierte el sentido de la comunicacion. En lugar de que la vista solicite) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 430 Td (activamente datos mediante peticiones bloqueantes o retenga callbacks directos, la vista se) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 416 Td (limita a SUSCRIBIRSE pasivamente a una fuente unica de verdad inmutable \(Single Source of) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 402 Td (Truth\). Cuando los datos cambian, el observador es notificado automaticamente sin violar el) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 388 Td (ciclo de vida.) Tj ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources 3 0 R /Contents 7 0 R >>
+endobj
+7 0 obj
+<< /Length 2848 >>
+stream
+q
+0.4 0.4 0.4 rg
+BT
+/F1 9 Tf
+54 756 Td
+(MANUAL DE ESTUDIO: OBSERVERS EN ANDROID CLEAN ARCHITECTURE) Tj
+ET
+0.8 0.8 0.8 RG
+0.75 w
+54 750 m 558 750 l S
+Q
+q 0.12 0.35 0.8 rg 54 722 504 1.5 re f Q
+BT /F2 15 Tf 0.1 0.2 0.5 rg 54 730 Td (2. Clean Architecture + MVVM: Separacion de Responsabilidades) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 702 Td (Para que una aplicacion sea escalable y facil de probar de forma unitaria, desacoplamos la) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 688 Td (logica de negocio del framework de Android mediante Clean Architecture. La arquitectura consta) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 674 Td (de tres capas estrictas:) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 58 656 Td (* Capa Data: Implementa los repositorios \(PokemonRepositoryImpl\) y DataSources. Consume la) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 66 643 Td (API REST de PokeAPI mediante Retrofit y Moshi. Transforma los DTOs de red en modelos puros) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 66 630 Td (de dominio mediante PokemonMapper.) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 58 615 Td (* Capa Domain: El corazon del negocio. Es KOTLIN PURO. No conoce dependencias de Android,) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 66 602 Td (Retrofit ni Compose. Define los contratos de repositorio \(interfaces\) y los Casos de Uso) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 66 589 Td (\(Use Cases\) como GetGen1PokemonUseCase, GetGen2PokemonUseCase y GetPokemonDetailUseCase.) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 58 574 Td (* Capa Presentation: Contiene los ViewModels y la interfaz de usuario en Jetpack Compose.) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 66 561 Td (Los ViewModels orquestan la ejecucion de casos de uso y exponen flujos observables a la) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 66 548 Td (pantalla.) Tj ET
+q 0.85 0.2 0.2 rg 54 497 4 48 re f Q
+BT /F2 10.5 Tf 0.85 0.2 0.2 rg 66 535 Td (REGLA DE ORO ARQUITECTONICA) Tj ET
+BT /F1 9 Tf 0.25 0.25 0.25 rg 54 519 Td (La capa Domain NUNCA debe importar paquetes como 'androidx.lifecycle' ni 'LiveData'. LiveData y StateFlow) Tj ET
+BT /F1 9 Tf 0.25 0.25 0.25 rg 54 507 Td (son mecanismos de PRESENTACION. El dominio solo debe manejar funciones suspendidas o Flows puros.) Tj ET
+BT /F2 12 Tf 0.2 0.2 0.2 rg 54 477 Td (El Flujo Unidireccional de Datos \(UDF\)) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 459 Td (En Jetpack Compose aplicamos el principio de UDF \(Unidirectional Data Flow\): el estado fluye) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 445 Td (hacia abajo \(desde el ViewModel hacia los Composables\) y los eventos de usuario fluyen hacia) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 431 Td (arriba \(desde los Composables hacia el ViewModel a traves de lambdas onPokemonClick, onRetry,) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 417 Td (etc.\).) Tj ET
+q
+0.8 0.8 0.8 RG
+0.75 w
+54 42 m 558 42 l S
+0.4 0.4 0.4 rg
+BT
+/F1 9 Tf
+498 30 Td
+(Pagina 2) Tj
+ET
+Q
+endstream
+endobj
+8 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources 3 0 R /Contents 9 0 R >>
+endobj
+9 0 obj
+<< /Length 4321 >>
+stream
+q
+0.4 0.4 0.4 rg
+BT
+/F1 9 Tf
+54 756 Td
+(MANUAL DE ESTUDIO: OBSERVERS EN ANDROID CLEAN ARCHITECTURE) Tj
+ET
+0.8 0.8 0.8 RG
+0.75 w
+54 750 m 558 750 l S
+Q
+q 0.12 0.35 0.8 rg 54 722 504 1.5 re f Q
+BT /F2 15 Tf 0.1 0.2 0.5 rg 54 730 Td (3. El Enfoque Clasico: LiveData a Fondo) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 702 Td (Presentado en el Google I/O de 2017 como parte de Android Architecture Components, LiveData es) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 688 Td (un contenedor de datos observable consciente del ciclo de vida \(Lifecycle-aware\).) Tj ET
+BT /F2 12 Tf 0.2 0.2 0.2 rg 54 660 Td (Como opera el ciclo de vida en LiveData) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 642 Td (LiveData exige un 'LifecycleOwner' \(Activity o Fragment\). Solo despacha actualizaciones a los) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 628 Td (observadores si el componente se encuentra en un estado activo: STARTED o RESUMED. Si la) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 614 Td (aplicacion pasa a segundo plano \(STOPPED\), LiveData retiene la emision y la entrega) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 600 Td (inmediatamente cuando la app vuelve al primer plano. Al destruirse la vista \(DESTROYED\), el) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 586 Td (observador se desuscribe de forma automatica, garantizando la ausencia de memory leaks.) Tj ET
+BT /F2 12 Tf 0.2 0.2 0.2 rg 54 558 Td (Patron Backing Property y Manejo de Concurrencia) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 540 Td (El estado debe ser protegido para que ninguna vista externa pueda modificarlo directamente.) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 526 Td (Esto se logra encapsulando una variable Mutable privada y exponiendo una inmutable:) Tj ET
+q 0.95 0.96 0.98 rg 54 300 504 220 re f Q
+q 0.85 0.88 0.92 RG 0.5 w 54 300 504 220 re S Q
+BT /F3 8.5 Tf 0.1 0.2 0.35 rg 64 498 Td (// 1. Estado mutable privado \(solo el ViewModel lo puede modificar\)) Tj ET
+BT /F3 8.5 Tf 0.1 0.2 0.35 rg 64 486 Td (private val _uiState = MutableLiveData<UiState<List<Pokemon>>>\(UiState.Idle\)) Tj ET
+BT /F3 8.5 Tf 0.1 0.2 0.35 rg 64 474 Td () Tj ET
+BT /F3 8.5 Tf 0.1 0.2 0.35 rg 64 462 Td (// 2. Estado inmutable publico \(la vista solo puede OBSERVAR\)) Tj ET
+BT /F3 8.5 Tf 0.1 0.2 0.35 rg 64 450 Td (val uiState: LiveData<UiState<List<Pokemon>>> = _uiState) Tj ET
+BT /F3 8.5 Tf 0.1 0.2 0.35 rg 64 438 Td () Tj ET
+BT /F3 8.5 Tf 0.1 0.2 0.35 rg 64 426 Td (fun loadPokemon\(\) {) Tj ET
+BT /F3 8.5 Tf 0.1 0.2 0.35 rg 64 414 Td (    // En el hilo principal \(Main Thread\): usamos .value =) Tj ET
+BT /F3 8.5 Tf 0.1 0.2 0.35 rg 64 402 Td (    _uiState.value = UiState.Loading) Tj ET
+BT /F3 8.5 Tf 0.1 0.2 0.35 rg 64 390 Td (    viewModelScope.launch {) Tj ET
+BT /F3 8.5 Tf 0.1 0.2 0.35 rg 64 378 Td (        when \(val result = getPokemonUseCase\(\)\) {) Tj ET
+BT /F3 8.5 Tf 0.1 0.2 0.35 rg 64 366 Td (            is Resource.Success -> _uiState.value = UiState.Success\(result.data\)) Tj ET
+BT /F3 8.5 Tf 0.1 0.2 0.35 rg 64 354 Td (            // Si estuvieramos en hilo IO/Background usariamos: _uiState.postValue\(..) Tj ET
+BT /F3 8.5 Tf 0.1 0.2 0.35 rg 64 342 Td (            is Resource.Error -> _uiState.value = UiState.Error\(result.message\)) Tj ET
+BT /F3 8.5 Tf 0.1 0.2 0.35 rg 64 330 Td (        }) Tj ET
+BT /F3 8.5 Tf 0.1 0.2 0.35 rg 64 318 Td (    }) Tj ET
+BT /F3 8.5 Tf 0.1 0.2 0.35 rg 64 306 Td (}) Tj ET
+BT /F2 12 Tf 0.2 0.2 0.2 rg 54 274 Td (Limitaciones Criticas de LiveData) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 58 256 Td (* Acoplamiento al SDK de Android: Imposibilita el uso de la logica en Kotlin Multiplatform) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 66 243 Td (\(iOS, Desktop\).) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 58 228 Td (* Pobre catalogo de operadores: Solo cuenta con transformaciones basicas. No tiene) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 66 215 Td (debounce, combine, flatMap ni buffer.) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 58 200 Td (* El bug de los Eventos One-Shot: LiveData siempre retiene el ultimo valor emitido. Si) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 66 187 Td (muestras un Snackbar o ejecutas una navegacion, al rotar la pantalla se re-notifica al nuevo) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 66 174 Td (observador y el evento se dispara nuevamente.) Tj ET
+q
+0.8 0.8 0.8 RG
+0.75 w
+54 42 m 558 42 l S
+0.4 0.4 0.4 rg
+BT
+/F1 9 Tf
+498 30 Td
+(Pagina 3) Tj
+ET
+Q
+endstream
+endobj
+10 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources 3 0 R /Contents 11 0 R >>
+endobj
+11 0 obj
+<< /Length 4397 >>
+stream
+q
+0.4 0.4 0.4 rg
+BT
+/F1 9 Tf
+54 756 Td
+(MANUAL DE ESTUDIO: OBSERVERS EN ANDROID CLEAN ARCHITECTURE) Tj
+ET
+0.8 0.8 0.8 RG
+0.75 w
+54 750 m 558 750 l S
+Q
+q 0.12 0.35 0.8 rg 54 722 504 1.5 re f Q
+BT /F2 15 Tf 0.1 0.2 0.5 rg 54 730 Td (4. El Enfoque Moderno: Kotlin Coroutines & Flow) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 702 Td (Kotlin Flow es un stream asincrono y frio perteneciente a la biblioteca estandar) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 688 Td (kotlinx.coroutines. Al ser Kotlin puro, es completamente multiplataforma y desacoplado del) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 674 Td (sistema operativo.) Tj ET
+BT /F2 12 Tf 0.2 0.2 0.2 rg 54 646 Td (Diferencia entre Streams Frios y Calientes) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 58 628 Td (* Cold Flow \(Frio\): No ejecuta trabajo ni emite valores hasta que un colector invoca) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 66 615 Td (collect\(\). Cada colector ejecuta el stream de forma independiente. Ideal para peticiones a) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 66 602 Td (la base de datos Room o llamadas a Retrofit.) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 58 587 Td (* Hot Flow \(Caliente\): Emite datos continuamente independientemente de si hay suscriptores) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 66 574 Td (escuchando. Los dos flujos calientes por excelencia en Android son StateFlow y SharedFlow.) Tj ET
+BT /F2 12 Tf 0.2 0.2 0.2 rg 54 549 Td (StateFlow: La evolucion natural para UI State) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 531 Td (StateFlow es una especializacion de SharedFlow disenada especificamente para modelar el estado) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 517 Td (visual de una pantalla. Sus reglas fundacionales son:) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 58 499 Td (* Valor inicial obligatorio: Un StateFlow no puede existir sin estado inicial:) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 66 486 Td (MutableStateFlow\(UiState.Idle\).) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 58 471 Td (* Replay de 1: Cualquier nuevo suscriptor que llegue recibe de inmediato el ultimo estado) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 66 458 Td (emitido.) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 58 443 Td (* Conflacion automatica: Si emites el mismo objeto de estado dos veces seguidas \(equals\(\)) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 66 430 Td (== true\), StateFlow descarta la segunda emision, evitando recomposiciones ineficientes.) Tj ET
+BT /F2 12 Tf 0.2 0.2 0.2 rg 54 405 Td (SharedFlow: El fin de los hacks para Eventos One-Shot) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 387 Td (SharedFlow es un flujo caliente de proposito general que permite enviar eventos a multiples) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 373 Td (suscriptores. Al configurarse con replay = 0 por defecto, un evento emitido no queda almacenado) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 359 Td (en memoria. Es ideal para Snackbars, Toasts, dialogos o disparadores de navegacion que deben) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 345 Td (ejecutarse una sola vez.) Tj ET
+q 0.95 0.96 0.98 rg 54 155 504 184 re f Q
+q 0.85 0.88 0.92 RG 0.5 w 54 155 504 184 re S Q
+BT /F3 8.5 Tf 0.1 0.2 0.35 rg 64 317 Td (// 1. Estado de pantalla \(StateFlow\)) Tj ET
+BT /F3 8.5 Tf 0.1 0.2 0.35 rg 64 305 Td (private val _uiState = MutableStateFlow<UiState<List<Pokemon>>>\(UiState.Idle\)) Tj ET
+BT /F3 8.5 Tf 0.1 0.2 0.35 rg 64 293 Td (val uiState: StateFlow<UiState<List<Pokemon>>> = _uiState.asStateFlow\(\)) Tj ET
+BT /F3 8.5 Tf 0.1 0.2 0.35 rg 64 281 Td () Tj ET
+BT /F3 8.5 Tf 0.1 0.2 0.35 rg 64 269 Td (// 2. Canal de eventos de un solo uso \(SharedFlow\)) Tj ET
+BT /F3 8.5 Tf 0.1 0.2 0.35 rg 64 257 Td (private val _effectFlow = MutableSharedFlow<UiEffect>\(\)) Tj ET
+BT /F3 8.5 Tf 0.1 0.2 0.35 rg 64 245 Td (val effectFlow: SharedFlow<UiEffect> = _effectFlow.asSharedFlow\(\)) Tj ET
+BT /F3 8.5 Tf 0.1 0.2 0.35 rg 64 233 Td () Tj ET
+BT /F3 8.5 Tf 0.1 0.2 0.35 rg 64 221 Td (fun onFavoriteClick\(pokemon: Pokemon\) {) Tj ET
+BT /F3 8.5 Tf 0.1 0.2 0.35 rg 64 209 Td (    viewModelScope.launch {) Tj ET
+BT /F3 8.5 Tf 0.1 0.2 0.35 rg 64 197 Td (        // Emision de evento efimero:) Tj ET
+BT /F3 8.5 Tf 0.1 0.2 0.35 rg 64 185 Td (        _effectFlow.emit\(UiEffect.ShowSnackbar\('Favorito guardado'\)\)) Tj ET
+BT /F3 8.5 Tf 0.1 0.2 0.35 rg 64 173 Td (    }) Tj ET
+BT /F3 8.5 Tf 0.1 0.2 0.35 rg 64 161 Td (}) Tj ET
+q
+0.8 0.8 0.8 RG
+0.75 w
+54 42 m 558 42 l S
+0.4 0.4 0.4 rg
+BT
+/F1 9 Tf
+498 30 Td
+(Pagina 4) Tj
+ET
+Q
+endstream
+endobj
+12 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources 3 0 R /Contents 13 0 R >>
+endobj
+13 0 obj
+<< /Length 3390 >>
+stream
+q
+0.4 0.4 0.4 rg
+BT
+/F1 9 Tf
+54 756 Td
+(MANUAL DE ESTUDIO: OBSERVERS EN ANDROID CLEAN ARCHITECTURE) Tj
+ET
+0.8 0.8 0.8 RG
+0.75 w
+54 750 m 558 750 l S
+Q
+q 0.12 0.35 0.8 rg 54 722 504 1.5 re f Q
+BT /F2 15 Tf 0.1 0.2 0.5 rg 54 730 Td (5. Consumo de Observadores en Jetpack Compose) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 702 Td (Jetpack Compose necesita que los observables se transformen en instancias de State<T> para) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 688 Td (desencadenar la recomposicion cuando el valor cambie.) Tj ET
+BT /F2 12 Tf 0.2 0.2 0.2 rg 54 660 Td (Consumiendo LiveData en Compose) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 642 Td (Se utiliza la funcion de extension provista por runtime-livedata:) Tj ET
+q 0.95 0.96 0.98 rg 54 608 504 28 re f Q
+q 0.85 0.88 0.92 RG 0.5 w 54 608 504 28 re S Q
+BT /F3 8.5 Tf 0.1 0.2 0.35 rg 64 614 Td (val uiState by viewModel.uiState.observeAsState\(initial = UiState.Idle\)) Tj ET
+BT /F2 12 Tf 0.2 0.2 0.2 rg 54 582 Td (Consumiendo StateFlow con collectAsStateWithLifecycle\(\)) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 564 Td (Para StateFlow, el equipo de Google desarrollo una extension vital en) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 550 Td (lifecycle-runtime-compose:) Tj ET
+q 0.95 0.96 0.98 rg 54 516 504 28 re f Q
+q 0.85 0.88 0.92 RG 0.5 w 54 516 504 28 re S Q
+BT /F3 8.5 Tf 0.1 0.2 0.35 rg 64 522 Td (val uiState by viewModel.uiState.collectAsStateWithLifecycle\(\)) Tj ET
+q 0.1 0.6 0.25 rg 54 464 4 48 re f Q
+BT /F2 10.5 Tf 0.1 0.6 0.25 rg 66 502 Td (PREGUNTA CLAVE DE ENTREVISTAS TECNICAS) Tj ET
+BT /F1 9 Tf 0.25 0.25 0.25 rg 54 486 Td (Por que NO debemos usar 'collectAsState\(\)' plano y SI debemos usar 'collectAsStateWithLifecycle\(\)'?) Tj ET
+BT /F1 9 Tf 0.25 0.25 0.25 rg 54 474 Td (Respuesta: collectAsState\(\) mantiene activa la recoleccion de corrutinas aunque la aplicacion pase a) Tj ET
+BT /F1 9 Tf 0.25 0.25 0.25 rg 54 462 Td (segundo plano, consumiendo bateria, red y ciclos de CPU. Por el contrario, collectAsStateWithLifecycle\(\)) Tj ET
+BT /F1 9 Tf 0.25 0.25 0.25 rg 54 450 Td (cancela la recoleccion si el ciclo de vida cae por debajo de Lifecycle.State.STARTED.) Tj ET
+BT /F2 12 Tf 0.2 0.2 0.2 rg 54 420 Td (Consumiendo SharedFlow con LaunchedEffect) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 402 Td (Los eventos de SharedFlow no representan un estado persistente. Se deben recolectar en un) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 388 Td (efecto secundario controlado para evitar que se re-ejecuten en recomposiciones:) Tj ET
+q 0.95 0.96 0.98 rg 54 258 504 124 re f Q
+q 0.85 0.88 0.92 RG 0.5 w 54 258 504 124 re S Q
+BT /F3 8.5 Tf 0.1 0.2 0.35 rg 64 360 Td (val snackbarHostState = remember { SnackbarHostState\(\) }) Tj ET
+BT /F3 8.5 Tf 0.1 0.2 0.35 rg 64 348 Td () Tj ET
+BT /F3 8.5 Tf 0.1 0.2 0.35 rg 64 336 Td (LaunchedEffect\(Unit\) {) Tj ET
+BT /F3 8.5 Tf 0.1 0.2 0.35 rg 64 324 Td (    viewModel.effectFlow.collectLatest { effect ->) Tj ET
+BT /F3 8.5 Tf 0.1 0.2 0.35 rg 64 312 Td (        when \(effect\) {) Tj ET
+BT /F3 8.5 Tf 0.1 0.2 0.35 rg 64 300 Td (            is UiEffect.ShowSnackbar -> snackbarHostState.showSnackbar\(effect.message) Tj ET
+BT /F3 8.5 Tf 0.1 0.2 0.35 rg 64 288 Td (        }) Tj ET
+BT /F3 8.5 Tf 0.1 0.2 0.35 rg 64 276 Td (    }) Tj ET
+BT /F3 8.5 Tf 0.1 0.2 0.35 rg 64 264 Td (}) Tj ET
+q
+0.8 0.8 0.8 RG
+0.75 w
+54 42 m 558 42 l S
+0.4 0.4 0.4 rg
+BT
+/F1 9 Tf
+498 30 Td
+(Pagina 5) Tj
+ET
+Q
+endstream
+endobj
+14 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources 3 0 R /Contents 15 0 R >>
+endobj
+15 0 obj
+<< /Length 3800 >>
+stream
+q
+0.4 0.4 0.4 rg
+BT
+/F1 9 Tf
+54 756 Td
+(MANUAL DE ESTUDIO: OBSERVERS EN ANDROID CLEAN ARCHITECTURE) Tj
+ET
+0.8 0.8 0.8 RG
+0.75 w
+54 750 m 558 750 l S
+Q
+q 0.12 0.35 0.8 rg 54 722 504 1.5 re f Q
+BT /F2 15 Tf 0.1 0.2 0.5 rg 54 730 Td (6. Matriz Comparativa Exhaustiva) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 702 Td (Resumen rapido de especificaciones tecnicas entre los tres enfoques reactivos:) Tj ET
+q 0.92 0.94 0.97 rg 54 680 504 18 re f Q
+q 0.8 0.8 0.8 RG 0.5 w 54 680 504 18 re S Q
+BT /F2 9 Tf 0.1 0.1 0.1 rg 60 685 Td (Propiedad) Tj ET
+BT /F2 9 Tf 0.1 0.1 0.1 rg 180 685 Td (LiveData) Tj ET
+BT /F2 9 Tf 0.1 0.1 0.1 rg 360 685 Td (StateFlow / SharedFlow) Tj ET
+q 1.0 1.0 1.0 rg 54 662 504 18 re f Q
+q 0.8 0.8 0.8 RG 0.5 w 54 662 504 18 re S Q
+BT /F1 8.5 Tf 0.1 0.1 0.1 rg 60 667 Td (Origen) Tj ET
+BT /F1 8.5 Tf 0.1 0.1 0.1 rg 180 667 Td (Android Jetpack \(2017\)) Tj ET
+BT /F1 8.5 Tf 0.1 0.1 0.1 rg 360 667 Td (Kotlin Coroutines \(kotlinx\)) Tj ET
+q 1.0 1.0 1.0 rg 54 644 504 18 re f Q
+q 0.8 0.8 0.8 RG 0.5 w 54 644 504 18 re S Q
+BT /F1 8.5 Tf 0.1 0.1 0.1 rg 60 649 Td (Multiplataforma) Tj ET
+BT /F1 8.5 Tf 0.1 0.1 0.1 rg 180 649 Td (No \(solo Android\)) Tj ET
+BT /F1 8.5 Tf 0.1 0.1 0.1 rg 360 649 Td (Si \(KMP: iOS, Desktop, Web\)) Tj ET
+q 1.0 1.0 1.0 rg 54 626 504 18 re f Q
+q 0.8 0.8 0.8 RG 0.5 w 54 626 504 18 re S Q
+BT /F1 8.5 Tf 0.1 0.1 0.1 rg 60 631 Td (Valor Inicial) Tj ET
+BT /F1 8.5 Tf 0.1 0.1 0.1 rg 180 631 Td (Opcional \(puede ser null\)) Tj ET
+BT /F1 8.5 Tf 0.1 0.1 0.1 rg 360 631 Td (Obligatorio en StateFlow) Tj ET
+q 1.0 1.0 1.0 rg 54 608 504 18 re f Q
+q 0.8 0.8 0.8 RG 0.5 w 54 608 504 18 re S Q
+BT /F1 8.5 Tf 0.1 0.1 0.1 rg 60 613 Td (Ciclo de Vida) Tj ET
+BT /F1 8.5 Tf 0.1 0.1 0.1 rg 180 613 Td (Nativo con LifecycleOwner) Tj ET
+BT /F1 8.5 Tf 0.1 0.1 0.1 rg 360 613 Td (Via repeatOnLifecycle / Compose) Tj ET
+q 1.0 1.0 1.0 rg 54 590 504 18 re f Q
+q 0.8 0.8 0.8 RG 0.5 w 54 590 504 18 re S Q
+BT /F1 8.5 Tf 0.1 0.1 0.1 rg 60 595 Td (Eventos One-Shot) Tj ET
+BT /F1 8.5 Tf 0.1 0.1 0.1 rg 180 595 Td (Requiere wrappers \(hacks\)) Tj ET
+BT /F1 8.5 Tf 0.1 0.1 0.1 rg 360 595 Td (Nativo con SharedFlow \(replay=0\)) Tj ET
+q 1.0 1.0 1.0 rg 54 572 504 18 re f Q
+q 0.8 0.8 0.8 RG 0.5 w 54 572 504 18 re S Q
+BT /F1 8.5 Tf 0.1 0.1 0.1 rg 60 577 Td (Conflacion) Tj ET
+BT /F1 8.5 Tf 0.1 0.1 0.1 rg 180 577 Td (No garantiza conflacion) Tj ET
+BT /F1 8.5 Tf 0.1 0.1 0.1 rg 360 577 Td (Automatica \(equals == true\)) Tj ET
+q 1.0 1.0 1.0 rg 54 554 504 18 re f Q
+q 0.8 0.8 0.8 RG 0.5 w 54 554 504 18 re S Q
+BT /F1 8.5 Tf 0.1 0.1 0.1 rg 60 559 Td (Operadores) Tj ET
+BT /F1 8.5 Tf 0.1 0.1 0.1 rg 180 559 Td (Solo map y switchMap) Tj ET
+BT /F1 8.5 Tf 0.1 0.1 0.1 rg 360 559 Td (Catalogo funcional inmenso) Tj ET
+q 1.0 1.0 1.0 rg 54 536 504 18 re f Q
+q 0.8 0.8 0.8 RG 0.5 w 54 536 504 18 re S Q
+BT /F1 8.5 Tf 0.1 0.1 0.1 rg 60 541 Td (Lectura Sincrona) Tj ET
+BT /F1 8.5 Tf 0.1 0.1 0.1 rg 180 541 Td (liveData.value \(nullable\)) Tj ET
+BT /F1 8.5 Tf 0.1 0.1 0.1 rg 360 541 Td (stateFlow.value \(no nulo\)) Tj ET
+BT /F2 12 Tf 0.2 0.2 0.2 rg 54 512 Td (Guia de Migracion de LiveData a Flow en 4 Pasos) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 58 494 Td (* Paso 1: Sustituir MutableLiveData<T>\(init\) por MutableStateFlow<T>\(init\).) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 58 479 Td (* Paso 2: Exponer val state: StateFlow<T> = _state.asStateFlow\(\) en lugar de LiveData.) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 58 464 Td (* Paso 3: En caso de eventos efimeros \(Toasts/Nav\), reemplazar SingleLiveEvent por) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 66 451 Td (MutableSharedFlow<T>\(\).) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 58 436 Td (* Paso 4: En Compose: cambiar observeAsState\(\) por collectAsStateWithLifecycle\(\).) Tj ET
+q
+0.8 0.8 0.8 RG
+0.75 w
+54 42 m 558 42 l S
+0.4 0.4 0.4 rg
+BT
+/F1 9 Tf
+498 30 Td
+(Pagina 6) Tj
+ET
+Q
+endstream
+endobj
+16 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources 3 0 R /Contents 17 0 R >>
+endobj
+17 0 obj
+<< /Length 3786 >>
+stream
+q
+0.4 0.4 0.4 rg
+BT
+/F1 9 Tf
+54 756 Td
+(MANUAL DE ESTUDIO: OBSERVERS EN ANDROID CLEAN ARCHITECTURE) Tj
+ET
+0.8 0.8 0.8 RG
+0.75 w
+54 750 m 558 750 l S
+Q
+q 0.12 0.35 0.8 rg 54 722 504 1.5 re f Q
+BT /F2 15 Tf 0.1 0.2 0.5 rg 54 730 Td (7. Anti-Patrones Comunes y Preguntas Frecuentes) Tj ET
+BT /F2 12 Tf 0.2 0.2 0.2 rg 54 692 Td (Top 4 Anti-Patrones en Produccion) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 58 674 Td (* 1. Exponer Mutables publicos: Dejar MutableLiveData o MutableStateFlow con visibilidad) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 66 661 Td (publica permite que cualquier Fragment o Composable altere el estado, rompiendo la) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 66 648 Td (arquitectura unidireccional.) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 58 633 Td (* 2. StateFlow para Navegaciones: Almacenar la ruta de navegacion como estado en StateFlow) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 66 620 Td (provoca que al regresar de la pantalla secundaria o al rotar el telefono, la navegacion) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 66 607 Td (vuelva a dispararse automaticamente.) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 58 592 Td (* 3. LiveData en Capas de Dominio o Datos: Acopla la logica de negocio al framework de) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 66 579 Td (Android e imposibilita la creacion de pruebas unitarias puras y rapidas en la JVM.) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 58 564 Td (* 4. Modelado con multiples booleanos: Tener isLoading: Boolean, isError: Boolean, data:) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 66 551 Td (List?. Crea combinaciones imposibles \(ej: isLoading=true y isError=true\). Debe usarse una) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 66 538 Td (Sealed Interface UiState.) Tj ET
+BT /F2 12 Tf 0.2 0.2 0.2 rg 54 513 Td (Preguntas de Alumnos y Entrevistas) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 495 Td (P: Por que Google no deprecio oficialmente a LiveData si Flow es mejor?) Tj ET
+BT /F1 9 Tf 0.3 0.3 0.3 rg 54 477 Td (R: LiveData no esta deprecado porque sigue siendo perfectamente funcional para proyectos existentes en) Tj ET
+BT /F1 9 Tf 0.3 0.3 0.3 rg 54 465 Td (Java y vistas XML clasicas. Sin embargo, toda la documentacion oficial de Google y las nuevas librerias) Tj ET
+BT /F1 9 Tf 0.3 0.3 0.3 rg 54 453 Td (recomiendan StateFlow y SharedFlow para proyectos nuevos.) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 437 Td (P: Puedo emitir en StateFlow desde cualquier hilo?) Tj ET
+BT /F1 9 Tf 0.3 0.3 0.3 rg 54 419 Td (R: Si. StateFlow es seguro para concurrencia \(thread-safe\). Puedes actualizar '.value = ...' desde) Tj ET
+BT /F1 9 Tf 0.3 0.3 0.3 rg 54 407 Td (cualquier hilo o contexto de corrutinas sin requerir metodos como postValue\(\).) Tj ET
+q 0.12 0.35 0.8 rg 54 375 504 1.5 re f Q
+BT /F2 15 Tf 0.1 0.2 0.5 rg 54 383 Td (8. El Proyecto de Referencia: PokeDex Academy) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 355 Td (El proyecto acompanante disponible en este repositorio implementa esta teoria de forma) Tj ET
+BT /F1 10 Tf 0.15 0.15 0.15 rg 54 341 Td (vivencial en tres modulos:) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 58 323 Td (* Modulo 1 \(Kanto\): Lista y detalle de los primeros 151 Pokemon implementados 100% con) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 66 310 Td (LiveData.) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 58 295 Td (* Modulo 2 \(Johto\): Lista y detalle de los 100 Pokemon de 2da generacion con StateFlow y) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 66 282 Td (SharedFlow con boton de favoritos interactivo.) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 58 267 Td (* Modulo 3 \(Hoenn\): Taller con el endpoint y Clean Architecture listos pero con) Tj ET
+BT /F1 9.5 Tf 0.2 0.2 0.2 rg 66 254 Td (ExerciseViewModel.kt a medio hacer para que los estudiantes resuelvan los TODOs practicos.) Tj ET
+q
+0.8 0.8 0.8 RG
+0.75 w
+54 42 m 558 42 l S
+0.4 0.4 0.4 rg
+BT
+/F1 9 Tf
+498 30 Td
+(Pagina 7) Tj
+ET
+Q
+endstream
+endobj
+xref
+0 18
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000161 00000 n 
+0000000436 00000 n 
+0000000540 00000 n 
+0000003340 00000 n 
+0000003444 00000 n 
+0000006344 00000 n 
+0000006448 00000 n 
+0000010821 00000 n 
+0000010927 00000 n 
+0000015377 00000 n 
+0000015483 00000 n 
+0000018926 00000 n 
+0000019032 00000 n 
+0000022885 00000 n 
+0000022991 00000 n 
+trailer
+<< /Size 18 /Root 1 0 R >>
+startxref
+26830
+%%EOF
